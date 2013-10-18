@@ -1,0 +1,32 @@
+name : windows
+version : 0.0.1
+description: Experimental Windows box
+type : main
+platform : windows@2008
+keywords:
+  - windows
+  - .net
+  - c#
+box-detect:
+  priority : 1000
+  version :
+  detect:
+    - files:
+      - *.sln
+
+default-build:
+  basic-dotnet:
+    priority : 50
+    detect:
+      - default: true
+    text-to-append: |
+      # Build definition
+      build:
+        # The steps that will be executed on build
+        steps:
+          # A custom script step, name value is used in the UI
+          # and the code value contains the command that get executed
+          - script:
+              name: echo nothing
+              code: |
+                echo "nothing"
