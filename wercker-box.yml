@@ -12,7 +12,7 @@ box-detect:
   version :
   detect:
     - files:
-      - *.sln
+      - "*.sln"
 
 default-build:
   basic-dotnet:
