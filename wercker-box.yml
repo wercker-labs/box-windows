@@ -1,5 +1,5 @@
 name : windows
-version : 0.0.1
+version : 0.0.2
 description: Experimental Windows box
 type : main
 platform : windows@2008
@@ -11,8 +11,8 @@ box-detect:
   priority : 1000
   version :
   detect:
-    - files:
-      - "*.sln"
+    - partOfFiles:
+      - ".sln"
 
 default-build:
   basic-dotnet:
