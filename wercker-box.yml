@@ -1,5 +1,5 @@
 name : windows
-version : 0.0.2
+version : 0.0.3
 description: Experimental Windows box
 type : main
 platform : windows@2008
@@ -7,8 +7,52 @@ keywords:
   - windows
   - .net
   - c#
+packages:
+  - cygwin
+  - cygwin.nano
+  - cygwin.subversion
+  - cygwin.curl
+  - cygwin.rsync
+  - cygwin.ncurses
+  - cygwin.wget
+  - cygwin.tar
+  - cygwin.qawk
+  - cygwin.bzip2
+  - cygwin.subversion
+  - cygwin.vim
+  - AspNetMVC3Tools
+  - NuGet
+  - VisualStudioTestAgents2010
+  - Gallio
+  - Firefox
+  - Chrome
+  - DotNet4.5
+  - Silverlight
+  - NAnt
+  - VS2010.ShellIntegratedRedist
+  - VS2012.ShellIntegratedRedist
+  - DotNet4.0
+  - typescript
+  - Silverlight5DeveloperRuntime
+  - Silverlight5SDK
+  - WindowsAzureLibsForNet
+  - Wix35
+  - nano
+  - aspnetmvc
+  - golang
+  - appharborcli.install
+  - specflow
+  - AWSTools.Powershell
+  - msbuild.communitytasks
+  - eazfuscator.net
+  - stylecop
+  - winrar
+  - javaruntime
+  - WindowsPhoneSDK@8.0
+  - AdobeAirSdk
+
 box-detect:
-  priority : 1000
+  priority : 100
   version :
   detect:
     - partOfFiles:
@@ -24,9 +68,9 @@ default-build:
       build:
         # The steps that will be executed on build
         steps:
-          # A custom script step, name value is used in the UI
-          # and the code value contains the command that get executed
-          - script:
-              name: echo nothing
-              code: |
-                echo "nothing"
+          # Install packages with NuGet: https://app.wercker.com/#applications/52623205f4a7b1d05a00240b/tab/details
+          - wercker-labs/nuget
+          # Build your solution file: https://app.wercker.com/#applications/526231a7f4a7b1d05a002397/tab/details
+          - wercker-labs/msbuild
+          # Run tests: https://app.wercker.com/#applications/526231e0f4a7b1d05a0023dc/tab/details
+          - wercker-labs/dotnet-test
